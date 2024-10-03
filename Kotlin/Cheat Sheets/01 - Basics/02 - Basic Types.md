@@ -7,8 +7,8 @@ There are no direct primitive data types in Kotlin like in Java. Instead, **boxe
 // Integers
 val b: Byte = 0
 val s: Short = 13
-val i: Int = 45
-val l: Long = 56L
+val i: Int = 9_000
+val l: Long = 56_000L
 
 // Floating point numbers
 val f: Float = 0.14F
