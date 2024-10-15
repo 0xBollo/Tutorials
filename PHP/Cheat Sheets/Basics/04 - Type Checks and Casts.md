@@ -78,3 +78,59 @@ $student = new Student();
 $student instanceof Student; // true
 gettype($student); // 'object'
 ```
+
+## Type Casting
+
+### Explicit Casting
+You can explicitly cast types by writing the desired type in round brackets in front of it.
+```php
+$oneString = '1';
+$one = (int) $oneString;
+$true = (bool) $one;
+```
+Supported types for explicit casting:
+- `(int)` / `(integer)`
+- `(float)` / `(double)` / `(real)`
+- `(string)`
+- `(bool)` / `(boolean)`
+- `(array)`
+- `(object)`
+
+### Explicit Casting with Functions
+Alternatively, you can use functions for explicit casting.
+```php
+$oneString = '1';
+$one = intval($oneString);
+$true = boolval($one);
+```
+The following functions are available:
+- `intval()`
+- `floatval()` / `doubleval()`
+- `strval()`
+- `boolval()`
+
+#### `settype()`
+This function changes the type of the specified variable directly.
+```php
+$one = '1';
+settype($one, 'int');
+```
+The following values for the type are possible:
+- `'int'` / `'integer'`
+- `'float'` / `'double'`
+- `'string'`
+- `'bool'` / `'boolean'`
+- `'array'`
+- `'object'`
+- `'null'`
+
+### Implicit Casting (Type Juggling)
+Sometimes PHP can automatically convert the data type based on the context, e.g. for operations or function calls. This automatic adjustment of data types is called **type juggling**.
+```php
+function double(int $number) {
+    return $number * 2;
+}
+
+// string '22' is automatically converted to int 22
+double('22');
+```
