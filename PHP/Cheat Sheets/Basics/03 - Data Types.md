@@ -12,9 +12,9 @@ Scalar types only contain a single value.
 
 ```php
 $number = 9; // int
-$price = 1.99 // float
-$greeting = 'Hello World' // string
-$exists = true // bool
+$price = 1.99; // float
+$greeting = 'Hello World'; // string
+$exists = true; // bool
 ```
 
 ## Compound Types
