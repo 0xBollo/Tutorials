@@ -31,12 +31,12 @@ Classes are instantiated with the `new` keyword, as in Java.
 ```php
 $book = new Book("George Orwell", "1984");
 ```
-Instance members can be accessed with the object operator `->`.
+Instance members can be accessed with the **object operator** `->`.
 ```php
 $book->author = "Other author";
 $book->print();
 ```
-Static methods are called with the scope resolution operator `::`.
+Static methods are called with the **scope resolution operator** `::`.
 ```php
 Book::$exampleAuthor = 'Other author';
 $book = Book::createExample();
