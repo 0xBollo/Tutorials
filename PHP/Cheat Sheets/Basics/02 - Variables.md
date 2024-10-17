@@ -7,16 +7,20 @@ Variables are declared with the dollar sign `$` followed by a name.
 $number = 44;
 ```
 
-Constants are defined with the `const` keyword or the `define()` function
+Constants are defined with the `const` keyword or the `define()` function. Constants are automatically global and can be used across the entire script without the `global` keyword.
 ```php
 const PI = 3.14;
 define("PHI", 1.62);
+
+function echoPI() {
+    echo PI; // output: 3.14
+}
 ```
 
 ## Scopes
 
 ### Global Scope
-Global variables are defined outside of functions and classes. Within functions, you can access global variables using the keyword 'global'.
+Global variables are defined outside of functions and classes. Within functions, you can access global variables using the `global` keyword.
 ```php
 $name = 'Eugene'; // global variable
 
@@ -33,6 +37,32 @@ changeGlobalName();
 changeLocalName();
 echo $name; // output: Mara
 ```
+All global variables are stored in the superglobal array `$GLOBALS`. The index holds the name of the variable.
+```php
+$greeting = 'Hello World';
+
+function echoGreeting() {
+    $greeting = 'Hello PHP';
+
+    // output global variable
+    echo $GLOBALS["greeting"]; // output: Hello World
+
+    // output local variable
+    echo $greeting; // output: Hello PHP
+}
+```
+
+### Superglobals
+Several predefined variables are available in all scopes throughout a script without the need to use the `global` keyword. These superglobal variables are:
+- `$GLOBALS`
+- `$_SERVER`
+- `$_GET`
+- `$_POST`
+- `$_FILES`
+- `$_COOKIE`
+- `$_SESSION`
+- `$_REQUEST`
+- `$_ENV`
 
 ### Local Scope
 Local variables are defined within a function or method and are only available in this context.

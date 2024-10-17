@@ -55,8 +55,8 @@ gettype($add); // 'object'
 ```
 
 You can also do some other checks:
-- `is_scalar()` (whether it is a scalar type)
-- `is_numeric()` (whether it is a number or a numeric string)
+- `is_scalar()` - whether it is a scalar type
+- `is_numeric()` - whether it is a number or a numeric string
 - …
 
 ### `var_dump()`
@@ -95,6 +95,7 @@ Supported types for explicit casting:
 - `(bool)` / `(boolean)`
 - `(array)`
 - `(object)`
+- `(unset)` - converts to data type `NULL`
 
 ### Explicit Casting with Functions
 Alternatively, you can use functions for explicit casting.
