@@ -19,6 +19,7 @@ if (language is String) {
     println((language as String).length)
 }
 ```
+The opposite check can be done with the `!is` operator.
 
 ## Smart Casts
 If the type of a variable remains unchanged after a type check, the compiler can perform automatic casts to the checked type.

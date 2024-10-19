@@ -1,6 +1,6 @@
 # Control Structures
 
-## Conditional Statements
+## Conditions
 
 ### If Expression
 In Kotlin, `if` is an expression. Therefore, no ternary operator is required.
@@ -73,7 +73,7 @@ do {
 ```
 
 ### For Loop
-In Kotlin there is no traditional for loop, but a foreach loop. The `for` loop can iterate over all data structures that either implement the `Iterable` interface or overload the operator function `iterator()`.
+In Kotlin there is no traditional for loop, but a foreach loop. The `for` loop can iterate over all types that provide an implementation of the **operator function** `iterator()`.
 
 ```kotlin
 val countries: Array<String> = arrayOf("Germany", "China", "Egypt")
@@ -81,3 +81,7 @@ for (country in countries) {
     println(country)
 }
 ```
+
+### Break and Continue
+
+Kotlin supports traditional `break` and `continue` operators in loops.

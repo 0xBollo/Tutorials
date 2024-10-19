@@ -65,7 +65,7 @@ val table: Array<Array<String>> = arrayOf(arrayOf("Name", "Age"), arrayOf("Dan",
 val numpad: Array<IntArray> = Array(3) { i -> IntArray(3) { j -> i * 3 + j + 1 } }
 ```
 
-## Iterate Through Arrays
+## Iterate through Arrays
 
 You can use a normal `for` loop to iterate over the elements of an array.
 ```kotlin
@@ -94,7 +94,7 @@ for ((i, country) in countries.withIndex()) {
 ```
 There are, of course, many other ways to iterate over arrays, such as functional approaches.
 
-## Variable Number Of Arguments
+## Variable Number of Arguments
 
 You can pass a variable number of arguments to a function via the `vararg` parameter.
 ```kotlin
