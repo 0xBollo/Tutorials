@@ -1,8 +1,14 @@
 # Classes
 
-## Classes and Objects
+## Define Classes
 
-Classes in PHP are defined in a similar way to Java.
+Classes in PHP are defined with the `class` keyword. In contrast to JavaScript, PHP classes are not functions under the hood, but real object-oriented constructs. A class can contain the following:
+- Instance properties
+- Static properties
+- Constants (are automatically static)
+- Magic Functions (e.g. the `__construct()` function)
+- Instance methods
+- Static methods
 ```php
 class Book {
     // Properties
@@ -11,8 +17,11 @@ class Book {
     public static $exampleAuthor = 'George Orwell';
     public static $exampleTitle = '1984';
 
-    // Constructor
-    public function __construct(string $author, string $title) {
+    // Constants
+    public const MAX_BOOK_COUNT = 1000;
+
+    // Magic constructor function
+    public function __construct($author, $title) {
         $this->author = $author;
         $this->title = $title;
     }
@@ -23,32 +32,59 @@ class Book {
     }
 
     public static function createExample(): Book {
-        return new Book(Book::$exampleAuthor , Book::$exampleTitle);
+        return new Book(self::$exampleAuthor , self::$exampleTitle);
     }
 }
 ```
-Classes are instantiated with the `new` keyword, as in Java.
+
+## Instantiate Classes
+
+Classes are instantiated with the `new` keyword.
 ```php
 $book = new Book("George Orwell", "1984");
 ```
+
+## Access Class Members
 Instance members can be accessed with the **object operator** `->`.
 ```php
-$book->author = "Other author";
+$book->author = 'Other author';
 $book->print();
 ```
-Static methods are called with the **scope resolution operator** `::`.
+Static members are called with the **scope resolution operator** `::`.
 ```php
-Book::$exampleAuthor = 'Other author';
+Book::$exampleAuthor = 'Other example author';
 $book = Book::createExample();
 ```
 
+## Access Class Members within a Class
+
+In Java, you can simply assign class members within the class by name. In PHP, on the other hand, you have to explicitly use certain keywords to access class members.
+
+### `$this`
+The `$this` variable refererences the current instance within a class context. It allows you to access the instance properties and methods of the current object. See this code snippet from the example above:
+```php
+public function __construct($author, $title) {
+    $this->author = $author;
+    $this->title = $title;
+}
+```
+
+### `self`
+The `self` keyword refers to the class in which it is used. It allows you to access static properties, constants and methods within the class. You can think of the `self` keyword as a placeholder for the name of the current class. See this code snippet from the example above:
+```php
+public static function createExample(): Book {
+    return new Book(self::$exampleAuthor , self::$exampleTitle);
+}
+```
+_Note: An alternative to the `self` keyword is the `static` keyword. `static` only makes a difference if it is used within a base class from which other classes inherit. More on this in the inheritance cheat sheet._
+
 ## Visibility Modifiers
 
-Class members without modifiers are implicitly public. For properties, however, a modifier must be specified explicitly, unless the deprecated `var` keyword is used. Either way, it is recommended to explicitly specify the visibility modifiers for all members.
+Class members without modifiers are implicitly public. For instance properties, however, a modifier must be specified explicitly, unless the deprecated `var` keyword is used. Either way, it is recommended to explicitly specify the visibility modifiers for all members.
 
 PHP offers similar visibility modifiers as Java:
 - `public`: Class member can be accessed everywhere.
-- `protected`: Class member can be accessed only within the class itself and by inheriting and parent classes.
+- `protected`: Class member can be accessed only within the class itself and by child and parent classes.
 - `private`: Class member can only be accessed within the class.
 
 There is no equivalent in PHP for the implicit `package-private` modifier in Java.

@@ -1,13 +1,16 @@
 # Variables
 
-## Declaring Variables
+## Variables
 
 Variables are declared with the dollar sign `$` followed by a name.
 ```php
 $number = 44;
 ```
 
-Constants are defined with the `const` keyword or the `define()` function. Constants are automatically global and can be used across the entire script without the `global` keyword.
+## Compile-Time Constants
+In PHP there are only compile-time constants, whose value is already determined at compile time. It is not possible to initialize constants at runtime, as is the case in JavaScript, for example. Constants can only be defined at top level or in classes.
+
+Constants are defined with the `const` keyword or the `define()` function and must be initialized immediately upon declaration.. Constants are automatically global and can be used across the entire script without the `global` keyword. 
 ```php
 const PI = 3.14;
 define("PHI", 1.62);
