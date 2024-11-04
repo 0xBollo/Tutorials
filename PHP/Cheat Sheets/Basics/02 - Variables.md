@@ -7,17 +7,20 @@ Variables are declared with the dollar sign `$` followed by a name.
 $number = 44;
 ```
 
-## Compile-Time Constants
-In PHP there are only compile-time constants, whose value is already determined at compile time. It is not possible to initialize constants at runtime, as is the case in JavaScript, for example. Constants can only be defined at top level or in classes.
+## Constants
 
-Constants are defined with the `const` keyword or the `define()` function and must be initialized immediately upon declaration.. Constants are automatically global and can be used across the entire script without the `global` keyword. 
+Constants are declared without the dollar sign.
+
+### Compile-time constants
+Compile-time constants are defined with the `const` keyword and must be initialized with a static value. They can only be defined at top level, in namespaces or classes. There are no local constants.
 ```php
 const PI = 3.14;
-define("PHI", 1.62);
+```
 
-function echoPI() {
-    echo PI; // output: 3.14
-}
+### Runtime Constants
+Runtime constants are defined with the `define()` function and are always global, no matter where `define()` is called.
+```php
+define("APP_START", date("Y-m-d H:i:s"));
 ```
 
 ## Scopes
@@ -52,6 +55,14 @@ function echoGreeting() {
 
     // output local variable
     echo $greeting; // output: Hello PHP
+}
+```
+Global constants can be accessed without the `global` keyword (as constants do not have the dollar sign and there are no local constants, it can only be a global constant).
+```php
+const PI = 3.14;
+
+function echoPI() {
+    echo PI; // output: 3.14
 }
 ```
 

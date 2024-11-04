@@ -76,7 +76,7 @@ public static function createExample(): Book {
     return new Book(self::$exampleAuthor , self::$exampleTitle);
 }
 ```
-_Note: An alternative to the `self` keyword is the `static` keyword. `static` only makes a difference if it is used within a base class from which other classes inherit. More on this in the inheritance cheat sheet._
+_Note: An alternative to the `self` keyword is the `static` keyword. `static` only makes a difference if it is used within a base class from which other classes inherit. More on this in the [inheritance cheat sheet](02%20-%20Inheritance.md#static)._
 
 ## Visibility Modifiers
 
