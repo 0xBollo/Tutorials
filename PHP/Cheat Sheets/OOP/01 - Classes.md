@@ -5,7 +5,7 @@
 Classes in PHP are defined with the `class` keyword. In contrast to JavaScript, PHP classes are not functions under the hood, but real object-oriented constructs. A class can contain the following:
 - Instance properties
 - Static properties
-- Constants (are automatically static)
+- Compile-time constants (are automatically static)
 - Magic Functions (e.g. the `__construct()` function)
 - Instance methods
 - Static methods

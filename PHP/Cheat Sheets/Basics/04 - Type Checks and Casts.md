@@ -4,7 +4,7 @@
 
 ### `getType()`
 
-This function returns the data type of a variable as a string.
+This function returns the data type of a value as string.
 ```php
 $number = 4;
 echo gettype($number); // output: integer
@@ -23,7 +23,7 @@ Possible return values:
 
 ### `is_*()`
 
-PHP offers a number of specific functions to check **whether a variable has a specific type**:
+PHP offers a number of specific functions to check **whether a value has a specific type**:
 - `is_int()` / `is_integer()` / `is_long()`
 - `is_float()` / `is_double()` / `is_real()`
 - `is_bool()`
@@ -69,7 +69,7 @@ var_dump($number); // output: int(14)
 
 ### `instanceof`
 
-This is used to check whether an object is an instance of a certain class.
+This is used to check the class type of an object.
 
 ```php
 class Student {}
