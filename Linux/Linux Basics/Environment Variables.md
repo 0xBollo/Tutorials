@@ -32,19 +32,19 @@ Environment variables can be set with the shell builtin command `export`.
 ```bash
 export myEnvVar='Hello World!'
 ```
-If an environment variable is not defined in one of the dedicated configuration files (such as `~/.profile` or `/etc/environment`), it is only temporarily available in the current shell session.
+If an environment variable is not defined in one of the dedicated configuration files (such as `~/.profile` or `/etc/profile`), it is only temporarily available in the current shell session.
 
 ### User Environment Variables
 User environment variables apply specifically to an individual user and are only available in their sessions. They can be set in **user-specific shell startup files**.
 - `~/.profile`
-- `~/.bash_profile` / `~/.bash_login`
-- `~/.bashrc`
+- `~/.bash_profile`
+- `~/.bash_login`
 - …
 
 ### System-wide Environment Variables
 System environment variables apply to all users and are available system-wide. They are set in **global shell startup files**.
-- `etc/profile`
-- `etc/bash.bashrc`
+- `/etc/profile`
+- `/etc/profile.d/*.sh`
 - …
 
 ## References
