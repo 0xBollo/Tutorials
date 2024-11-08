@@ -31,15 +31,16 @@ val ui: UInt = 45u
 val ul: ULong = 56uL
 ```
 
-## Special Types
+## Strings
 
-### Strings
 ```kotlin
-val name: String = "Eugene"
+val s: String = "Hello World!"
 ```
 
+## Special Types
+
 ### Unit
-`Unit` corresponds roughly to `void` in Java, but is treated as a data type. `Unit` is implemented as a singleton object, which means the `Unit` class only has a single instance, the `Unit` object of the same name. It represents the absence of any meaningful value.
+`Unit` corresponds roughly to `void` in Java, but is treated as a data type. It represents the absence of any meaningful value. `Unit` is implemented as a singleton object, which means the `Unit` class only has a single instance, the `Unit` object of the same name.
 ```kotlin
 val u1: Unit = Unit
 val u2: Unit = println()
@@ -55,15 +56,17 @@ val a2: Any = "Hello World!"
 ### Nothing
 `Nothing` has no instances. This type indicates that a function or expression will never return a value. For example, the following expressions are of type `Nothing`:
 ```kotlin
-// For demonstration purposes only (you would never write it like that)
+// For demonstration purposes only
+// n1 and n2 would never be initialized
 val n1: Nothing = throw Exception()
 val n2: Nothing = return
 ```
-`Nothing` is the so-called **bottom type**, which means that it implicitly inherits from all other types. This makes it possible to use `Nothing` at any point in the code where any other type is expected.
+`Nothing` is Kotlin's **bottom type**, which means that it implicitly inherits from all other types. This makes it possible to use `Nothing` at any place in the code where any other type is expected.
 ```kotlin
-// For demonstration purposes only (you would never write it like that)
-val n1: Int = throw Exception()
-val n2: String = return
+// For demonstration purposes only
+// n1 and n2 would never be initialized
+val n1: Int = throw Exception() // expecting an Int, given Nothing
+val n2: String = return // expecting a String, given Nothing
 ```
 In practice, this allows us to write such expressions that would not be valid in other languages without a bottom type:
 ```kotlin
@@ -81,7 +84,7 @@ fun add(a: Int, b: Int): Int {
 ```
 
 ## Nullable Types
-All types in Kotlin are non-null by default (null safety). To get the nullable type, you have to add a question mark at the end.
+All types in Kotlin are non-null by default. To get the nullable type, you have to add a question mark `?` at the end.
 ```kotlin
 val nullableInt: Int? = null
 val nullableString: String? = null
