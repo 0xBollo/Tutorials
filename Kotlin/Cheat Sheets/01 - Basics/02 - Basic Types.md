@@ -40,7 +40,7 @@ val s: String = "Hello World!"
 ## Special Types
 
 ### Unit
-`Unit` corresponds roughly to `void` in Java, but is treated as a data type. It represents the absence of any meaningful value. `Unit` is implemented as a singleton object, which means the `Unit` class only has a single instance, the `Unit` object of the same name.
+`Unit` corresponds roughly to `void` in Java, but is treated as a data type. `Unit` is implemented as a singleton object, which means the `Unit` class only has a single instance, the `Unit` object of the same name. It represents the absence of any meaningful value.
 ```kotlin
 val u1: Unit = Unit
 val u2: Unit = println()
@@ -72,7 +72,7 @@ In practice, this allows us to write such expressions that would not be valid in
 ```kotlin
 val username: String = if (user != null) user.name else throw Exception()
 ```
-Another use case is to specify `Nothing` as the return type of a function so that it can be used in a context where any other type is expected.
+Functions with the return type `Nothing` always throw an exception and can therefore be used like a `throw`.
 ```kotlin
 fun notImplemented(): Nothing {
     throw Exception()
