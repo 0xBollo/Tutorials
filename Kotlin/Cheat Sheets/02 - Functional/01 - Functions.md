@@ -1,6 +1,6 @@
 # Functions
 
-## Function Declaration and Usage
+## Declaration and Usage
 
 Functions are declared using the `fun` keyword:
 ```kotlin
@@ -14,14 +14,9 @@ Functions are called using the standard approach:
 greet()
 ```
 
-Member functions are called with the dot notation:
-```kotlin
-obj.toString()
-```
-
 ## Parameters
 
-Parameters are separated by commas and must be explicitly typed.
+Function parameters are separated by commas and must be explicitly typed. Parameters are declared without the keywords `val` and `var`, as they are always immutable in Kotlin.
 ```kotlin
 fun greet(greeting: String, name: String) {
     println("$greeting $name!")
@@ -73,7 +68,7 @@ fun reformat(
     upperCaseFirstLetter: Boolean = true,
     divideByCamelHumps: Boolean = false,
     wordSeparator: Char = ' ',
-) { /*...*/ }
+): String { … }
 ```
 
 Named arguments can be passed in any order. Named and positioned arguments can also be mixed, but as soon as a named argument is not listed in its original position, all subsequent arguments must also be named.
@@ -124,17 +119,18 @@ printAllStrings(*names)
 
 When the function body consists of a single expression, the curly braces can be omitted and the body specified after an `=` symbol.
 ```kotlin
-fun double(x: Int): Int = x * 2
-```
-
-Explicitly declaring the return type is optional when this can be inferred by the compiler.
-```kotlin
 fun double(x: Int) = x * 2
 ```
 
-## Explicit Return Types
+## Return Types
 
-Functions with block body must always specify the return type explicitly, unless the return type is `Unit`.
+The return type of a function is specified after the parameter list.
+```kotlin
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+```
+**Functions with block body** must always specify the return type explicitly, unless the return type is `Unit`. With **single expression functions**, you do not have to specify the return type explicitly if it can be inferred by the compiler.
 
 ## Infix Functions
 
