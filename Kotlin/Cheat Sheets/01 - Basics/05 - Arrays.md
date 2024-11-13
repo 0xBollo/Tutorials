@@ -2,8 +2,8 @@
 
 ## Types Of Arrays
 
-### Object Arrays / Typed Arrays
-Object arrays **can store all data types**, including primitive types (but the JVM will use their wrapper classes). They are represented by the `Array` class.
+### Typed Arrays / Object Arrays
+Typed arrays **can store all data types**, including primitive types (but the JVM will use their wrapper classes). They are represented by the generic `Array` class.
 
 ### Primitive-Type Arrays
 Primitive-type arrays **can only store primitive data types** and the JVM will use the actual primitive types, so there is no boxing overhead. They are represented by the following classes:
@@ -26,7 +26,7 @@ All these classes have no inheritance relation to the `Array` class, but they ha
 
 ## Create Arrays
 
-To create arrays, you can use different **functions**.
+To create arrays, you can use various **functions**.
 ```kotlin
 // Create some object arrays
 val countries: Array<String> = arrayOf("Germany", "China", "Egypt") // ["Germany", "China", "Egypt"]
@@ -67,9 +67,17 @@ val numpad: Array<IntArray> = Array(3) { i -> IntArray(3) { j -> i * 3 + j + 1 }
 
 ## Convert Arrays
 
-To convert **primitive-type arrays to object arrays**, use the `toTypedArray()` function.
+To convert **primitive-type arrays to object arrays**, use the `toTypedArray()` extension function of the corresponding primitive-type array class.
+```kotlin
+val primitiveIntArray = intArrayOf(1, 2, 3) // IntArray
+val typedIntArray = primitiveIntArray.toTypedArray() // Array<Int>
+```
 
-To convert **object arrays to primitive-type arrays**, use `toByteArray()`, `toIntArray()`, `toBooleanArray()`, and so on.
+To convert **object arrays to primitive-type arrays**, use the `toByteArray()`, `toIntArray()`, `toDoubleArray()`, … extension functions of the corresponding concretized `Array` classes `Array<Byte>`, `Array<Int>`, `Array<Double>`, ….
+```kotlin
+val typedIntArray = arrayOf(1, 2, 3) // Array<Int>
+val primitiveIntArray = typedIntArray.toIntArray() // IntArray
+```
 
 ## Iterate through Arrays
 
@@ -79,7 +87,7 @@ for (country in countries) {
     println(country)
 }
 ```
-Use the `indices` property to iterate over the range of valid indices of an array.
+Use the `indices` extension property to iterate over the range of valid indices of an array.
 ```kotlin
 for (i in countries.indices) {
     println(countries[i])
@@ -87,7 +95,7 @@ for (i in countries.indices) {
 ```
 Use the `withIndex` extension function to iterate over the indexed values of an array.
 ```kotlin
-// For demonstration purposes only
+// For demonstration purposes
 // indexWithCountry is of type IndexedValue<String>
 for (indexWithCountry in countries.withIndex()) {
         println("${indexWithCountry.index}: ${indexWithCountry.value}")
@@ -105,7 +113,7 @@ There are, of course, many other ways to iterate over arrays, such as functional
 To compare whether two arrays have the same elements in the same order, use the infix functions `contentEquals` and `contentDeepEquals` (for nested arrays).
 ```kotlin
 if (names contentEquals arrayOf("Dan", "Jane", "Carlo")) {
-    …
+    println("Contents are equal")
 }
 ```
 Don't use equality `==` and inequality `!=` operators to compare the contents of arrays. These operators call the `equals()` method internally, and in Java `equals()` for arrays compares the references and not the contents of the arrays.
