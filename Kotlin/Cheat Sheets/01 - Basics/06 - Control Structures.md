@@ -3,43 +3,62 @@
 ## Conditions
 
 ### If Expression
-In Kotlin, `if` is an expression. Therefore, no ternary operator is required.
-
+In Kotlin, `if` is an expression. The value of the selected branch becomes the value of the `if` expression.
+A branch can be a single expression or a block. If it is a block, the last expression within the block is the value of the branch.
 ```kotlin
-val number =
-    if (…) {
-        println("Assign the value 0 to number")
-        0
-    } else if (…) {
-        println("Assign the value 1 to number")
-        1
+// Branches are single expressions
+val number = if (true) 77 else 99
+
+// Branches are blocks
+val name =
+    if (false) {
+        println("Set name to \"Eugene\"")
+        "Eugene"
+    } else if (true) {
+        println("Set name to \"Marie\"")
+        "Marie"
     } else {
-        println("Assign the value 2 to number")
-        2
+        println("Set name to \"Dan\"")
+        "Dan"
     }
 ```
 
 ### When Expression
-The `when` expression is similar to the `switch` statement in Java, but is much more flexible. The value of the first matching block is the value of the `when` expression. You can use arbitrary expressions (not only constants) as branch conditions.
+The `when` expression is similar to the `switch` statement in Java, but is much more flexible. 
+The value of the first matching branch becomes the value of the `when` expression. A branch can
+be a single expression or a block. If it is a block, the last expression within the block is the
+value of the branch. The `when` expression can be used with or without a subject.
+
+#### With Subject
+If an argument is supplied, `when` matches it against the branches. You can use arbitrary expressions (not only constants) as branch conditions.
 
 ```kotlin
 val name = when (number) {
     in 1..10 -> {
-        println("Assign the value \"Eugene\" to name")
+        println("Set name to \"Eugene\"")
         "Eugene"
     }
     11 -> {
-        println("Assign the value \"Marie\" to name")
+        println("Set name to \"Marie\"")
         "Marie"
     }
     else -> {
-        println("Assign the value \"Dan\" to name")
+        println("Set name to \"Dan\"")
         "Dan"
     }
 }
 ```
+You can capture the subject in a variable. The scope of this variable is restricted to the body of the `when` expression.
+```kotlin
+fun Request.getBody() =
+    when (val response = executeRequest()) {
+        is Success -> response.body
+        is HttpError -> throw HttpException(response.status)
+    }
+```
 
-If no argument is supplied, the branch conditions of a `when` expression are simply boolean expressions and the first branch whose condition is true is executed. This approach is a good alternative to an `if`-`else if` chain.
+#### Without Subject
+If no argument is supplied, the branch conditions of a `when` expression are simply boolean expressions. This approach is a good alternative to an `if`-`else if` chain.
 
 ```kotlin
 when {
@@ -76,7 +95,7 @@ do {
 In Kotlin there is no traditional for loop, but a foreach loop. The `for` loop can iterate over all types that provide an implementation of the **operator function** `iterator()`.
 
 ```kotlin
-val countries: Array<String> = arrayOf("Germany", "China", "Egypt")
+val countries = arrayOf<String>("Germany", "China", "Egypt")
 for (country in countries) {
     println(country)
 }
@@ -84,4 +103,4 @@ for (country in countries) {
 
 ### Break and Continue
 
-Kotlin supports traditional `break` and `continue` operators in loops.
+Kotlin supports traditional `break` and `continue` keywords in loops.
