@@ -54,7 +54,11 @@ val a2: Any = "Hello World!"
 ```
 
 ### Nothing
-`Nothing` has no instances. This type indicates that a function or expression will never return a value. For example, the following expressions are of type `Nothing`:
+`Nothing` has no instances. This type represents a value that will never exist. Expressions and functions with the return type `Nothing` will never return a value. For example, the following expressions are of type `Nothing`:
+- `return`
+- `break`
+- `continue`
+- `throw Exception()`
 ```kotlin
 // For demonstration purposes only
 // n1 and n2 would never be initialized
