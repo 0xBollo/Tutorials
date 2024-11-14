@@ -28,7 +28,7 @@ be a single expression or a block. If it is a block, the last expression within 
 value of the branch. The `when` expression can be used with or without a subject.
 
 ### With Subject
-If an argument is supplied, `when` matches it against the branches. You can use arbitrary expressions (not only constants) as branch conditions.
+If a subject is supplied, all branch conditions are evaluated in relation to it. You can use arbitrary expressions (not only constants) as branch conditions.
 
 ```kotlin
 val name = when (number) {
@@ -56,7 +56,7 @@ fun Request.getBody() =
 ```
 
 ### Without Subject
-If no argument is supplied, the branch conditions of a `when` expression are simply boolean expressions. This approach is a good alternative to an `if`-`else if` chain.
+If no subject is supplied, the branch conditions are simply boolean expressions. This approach is a good alternative to an `if`-`else if` chain.
 
 ```kotlin
 when {
