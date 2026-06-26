@@ -232,18 +232,16 @@ Typical examples from the standard library are the classes `Pair`, `Triple` and 
 
 ### Invoke Operator
 
-The invoke operator is used to call objects as if they were functions.
+The invoke operator is used to call objects as if they were functions. This allows you to design objects like configurable functions that maintain state or have specific initialization requirements.
 
 | Symbol              | Meaning       | Operator Function  | Parameter Types     | Return Type        |
 |---------------------|---------------|--------------------|---------------------|--------------------|
 | `(arg_1, …, arg_n)` | Invoke object | `invoke()`         | Any types           | Any type           |
 
-There are **two main use cases** for the invoke operator:
-- Call instances of function types as if they were normal functions
-- Design objects like configurable functions that maintain state or have specific initialization requirements
+Here are some practical use cases of the invoke operator.
 
-#### Function Types
-In Kotlin, lambdas and callable references under the hood are anonymous objects of type `Function0`, `Function1`, …, `FunctionN` (depending on the number of parameters) that implement the invoke operator. This allows them to be called like normal functions, although they are actually objects.
+#### Call Instances of Function Types
+In Kotlin, anonymous functions, lambdas and callable references under the hood are anonymous objects of type `Function0`, `Function1`, `Function2`, …, (depending on the number of parameters) that implement the invoke operator. This allows them to be called like normal functions, although they are actually objects.
 
 For example, this:
 ```kotlin
@@ -267,6 +265,21 @@ For comparison: In Java you have to call the method of the functional interface 
 ```java
 BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
 int result = add.apply(3, 4);
+```
+
+#### Alternative to Closures
+
+```kotlin
+class Multiplier(var factor: Int) {
+    operator fun invoke(a: Int) = a * factor
+}
+
+fun main() {
+    val multiplier = Multiplier(2)
+    println(multiplier(5)) // Output: 10
+    multiplier.factor = 10
+    println(multiplier(5)) // Output: 50
+}
 ```
 
 ## Declaring and Overriding Operator Functions
@@ -304,7 +317,7 @@ class Person(val id: Long, val name: String) {
 
 Kotlin Programming Language (2024) 'Operator overloading', available at: https://kotlinlang.org/docs/operator-overloading.html.
 
-Dehghani, A. (2024) 'Operator Overloading in Kotlin', Baeldung On Kotlin, available at: https://www.baeldung.com/kotlin/operator-overloading
+Dehghani, A. (2024) 'Operator Overloading in Kotlin', Baeldung On Kotlin, available at: https://www.baeldung.com/kotlin/operator-overloading.
 
 Duggu (2023) 'Mastery on Invoke Kotlin', Medium, available at: https://medium.com/@dugguRK/mastery-on-invoke-kotlin-8f1ebb4828d0.
 
